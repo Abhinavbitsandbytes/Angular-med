@@ -1,0 +1,144 @@
+{
+  "medicineList": [
+    {
+      "id": 1,
+      "name": "Crocin",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "20",
+      "price": "134"
+    },
+    {
+      "id": 2,
+      "name": "Dolo",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "5",
+      "price": "256"
+    },
+    {
+      "id": 3,
+      "name": "Coscopin",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "32",
+      "price": "25"
+    },
+    {
+      "id": 4,
+      "name": "Cyra-D",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "8",
+      "price": "45"
+    },
+    {
+      "id": 5,
+      "name": "Liv-52",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "23",
+      "price": "198"
+    },
+    {
+      "id": 6,
+      "name": "Volini",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "3",
+      "price": "42"
+    },
+    {
+      "id": 7,
+      "name": "Monocef",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "23",
+      "price": "134"
+    },
+    {
+      "id": 8,
+      "name": "Fucidin",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "78",
+      "price": "56"
+    },
+    {
+      "id": 9,
+      "name": "Micumin",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "221",
+      "price": "49"
+    },
+    {
+      "id": 10,
+      "name": "Softeron",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "31",
+      "price": "74"
+    },
+    {
+      "id": 11,
+      "name": "Glucose",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "321",
+      "price": "112"
+    },
+    {
+      "id": 12,
+      "name": "Electral",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "18",
+      "price": "192"
+    },
+    {
+      "id": 13,
+      "name": "Voveran",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "19",
+      "price": "72"
+    },
+    {
+      "id": 14,
+      "name": "Aciloc",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "13",
+      "price": "16"
+    },
+    {
+      "id": 15,
+      "name": "Silver X",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "61",
+      "price": "60"
+    },
+    {
+      "id": 16,
+      "name": "Glycomet",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "92",
+      "price": "29"
+    },
+    {
+      "id": 17,
+      "name": "Clavam",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "88",
+      "price": "173"
+    },
+    {
+      "id": 18,
+      "name": "Tencodep",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "118",
+      "price": "219"
+    },
+    {
+      "id": 19,
+      "name": "Sereta-50",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "190",
+      "price": "66"
+    },
+    {
+      "id": 20,
+      "name": "Foracort",
+      "description": "Lorem ipsum dolor sit amet, consectetur",
+      "quantity": "6",
+      "price": "94"
+    }
+  ]
+}

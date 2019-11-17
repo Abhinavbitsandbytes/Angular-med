@@ -1,0 +1,289 @@
+
+<div *ngIf="!filteredEvents && startServerMessage" class="white-color">Please start json server using command <span class="heading tomato_color" > json-server --watch db.json</span>  </div>
+
+<div class="container-fluid" *ngIf="filteredEvents">
+  <div class="row search_box" >
+    <div class="col-md-6 col-12">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="SEARCH MEDICINES"  [(ngModel)]="searchTerm">
+      </div>
+      </div>
+    </div>
+  <div class="row">
+
+    <div class="col-md-12 card_content">
+
+      <ng-container >
+        <div class="row">
+          <ng-container *ngIf="filteredEvents.length>0; else no_event">
+          <div class="col-md-2 col-6" *ngFor=" let event of filteredEvents">
+
+              <div *ngIf="event.id < 21" (click)="quickAdd(event.id)"  type="button " class="quick_add_button"> {{event.name}}</div>
+
+          </div>
+        </ng-container>
+        <ng-template #no_event><span class="white-color"> No results found! </span></ng-template>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <form [formGroup]="medicineForm" name="medicineForm">
+    <div class="medForm">
+    <div class="row text-center"> 
+          <div class="col-md-2">
+            <mat-form-field>
+                <mat-label>Medicine Name</mat-label>
+                <input  matInput placeholder="Medicine Name"
+                    name="medName" formControlName="medName" required>
+                    <mat-error *ngIf="medicineForm.get('medName').errors">{{getErrrorMessage('medName')}} </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-2">
+
+            <mat-form-field>
+                <mat-label>Medicine Description</mat-label>
+                <input matInput placeholder="Medicine Description" name="medDescription" formControlName="medDescription" required>
+                <mat-error *ngIf="medicineForm.get('medDescription').errors">{{getErrrorMessage('medDescription')}} </mat-error>
+          </mat-form-field>
+          </div>
+
+        <div class="col-md-2">
+
+            <mat-form-field>
+                <mat-label>Quantity</mat-label>
+                <input matInput placeholder="Quantity" name="quantity" type="number"
+                    formControlName="quantity" required>
+                    <mat-error *ngIf="medicineForm.get('quantity').errors">{{getErrrorMessage('quantity')}} </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div class="col-md-2">
+
+            <mat-form-field>
+                <mat-label>Price</mat-label>
+                <input matInput placeholder="Price" name="price" type="number"
+                    formControlName="price" required>
+                    <mat-error *ngIf="medicineForm.get('price').errors">{{getErrrorMessage('price')}} </mat-error>
+
+            </mat-form-field>
+
+        </div>
+
+
+        <div class="col-md-2">
+
+          <button type="button" (click)="addMedicine()" class="btn btn-outline-secondary">ADD MEDICINE</button>
+
+      </div>
+    
+</div>
+      
+    
+  </div>
+
+</form>
+
+<div class="row">
+  <div class="col-md-12" style="overflow:auto">
+    
+  
+<table class="table  table-hover" *ngIf="((filterMed && filterMed.length > 0) || (medicineToBeadded && medicineToBeadded.length > 0))">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>DESCRIPTION</th>
+      <th>QUANTITY</th>
+      <th>PRICE</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
+      <th>CLONE </th>
+    </tr>
+  </thead>
+  <tbody  *ngFor="let medicine of filterMed; let i= index">
+    <tr>
+      <td>{{medicine.name}}</td>
+      <td class="text-overflow">{{medicine.description}}</td>
+      <td>{{medicine.quantity}}</td>
+      <td>{{medicine.price}}</td>
+      <td><i (click)='editMedicine(medicine.id, i)' class="far fa-edit"></i></td>
+      <td><i (click)='deleteMedicine(medicine.id)' class="far fa-trash-alt"></i></td>
+      <td><i (click)='cloneMedicine(medicine.id)' class="far fa-clone"></i></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="modal-background"  *ngIf="openModal">
+  <div style="position: absolute;width: 80%;height: 60%; background: white;top: 0;bottom: 0;margin: auto;right: 0;left: 0">
+
+    <form [formGroup]="editForm" name="editForm" *ngIf="isEdited">
+      <div class="medForm">
+      <div class="row edit-form" >
+       
+          <div class="col-md-2">
+              <mat-form-field>
+                  <mat-label>Medicine Name</mat-label>
+                  <input  matInput placeholder="Medicine Name"
+                      name="medName" formControlName="medName" required>
+                      <mat-error *ngIf="editForm.get('medName').errors">{{getErrrorMessage('medName')}} </mat-error>
+              </mat-form-field>
+          </div>
+          <div class="col-md-2">
+    
+              <mat-form-field>
+                  <mat-label>Medicine Description</mat-label>
+                  <input matInput placeholder="Medicine Description" name="medDescription" formControlName="medDescription" required>
+                  <mat-error *ngIf="editForm.get('medDescription').errors">{{getErrrorMessage('medDescription')}} </mat-error>
+            </mat-form-field>
+            </div>
+    
+          <div class="col-md-2">
+    
+              <mat-form-field>
+                  <mat-label>Quantity</mat-label>
+                  <input matInput placeholder="Quantity" name="quantity" type="number"
+                      formControlName="quantity" required>
+                      <mat-error *ngIf="editForm.get('quantity').errors">{{getErrrorMessage('quantity')}} </mat-error>
+              </mat-form-field>
+    
+          </div>
+          <div class="col-md-2">
+    
+              <mat-form-field>
+                  <mat-label>Price</mat-label>
+                  <input matInput placeholder="Price" name="price" type="number"
+                      formControlName="price" required>
+                      <mat-error *ngIf="editForm.get('price').errors">{{getErrrorMessage('price')}} </mat-error>
+              </mat-form-field>
+    
+          </div>
+    
+    
+          <div class="col-md-2">
+    
+            <button style="margin-bottom: 12px;" type="button" (click)="save()" class="btn btn-outline-secondary">SAVE</button>
+    
+        </div>
+        <div class="col-md-2">
+    
+          <button type="button" (click)="discard()" class="btn btn-outline-secondary">DISCARD</button>
+  
+      </div>
+      
+    </div>
+        
+      
+    </div>
+    
+    </form>
+
+
+
+
+
+
+
+
+    <form [formGroup]="quickAddQuantityForm" name="quickAddQuantityForm" *ngIf="isquicklyAdded">
+      <div class="medForm">
+      <div class="row" style="text-align: center;padding: 20px;">
+       
+ 
+    
+          <div class="col-md-2">
+    
+              <mat-form-field>
+                  <mat-label>Quantity</mat-label>
+                  <input matInput placeholder="Quantity" name="quantity" type="number"
+                      formControlName="quantity" required>
+                      <mat-error *ngIf="quickAddQuantityForm.get('quantity').errors">Please enter Quantity </mat-error>
+              </mat-form-field>
+    
+          </div>
+  
+    
+    
+          <div class="col-md-2">
+    
+            <button type="button" (click)="saveQuantity()" class="btn btn-outline-secondary margin-bottom-12">SAVE</button>
+
+    
+        </div>
+        <div class="col-md-2">
+        <button type="button" (click)="discard()" class="btn btn-outline-secondary ">DISCARD</button>
+      </div>
+    </div>
+        
+      
+    </div>
+    
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+</div>
